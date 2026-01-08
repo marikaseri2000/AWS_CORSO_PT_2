@@ -1,12 +1,83 @@
-"""
-Per il pomeriggio avete questo obiettivo:
-Individuate un problema concreto che si possa risolvere con un piccolo programma in Python eseguibile da linea di comando.
-Scrivete le specifiche: cosa deve fare, quali input deve accettare, quali output deve produrre
-Poi provate a realizzarlo usando uno degli strumenti gratuiti che abbiamo visto questa mattina, sfruttando soprattutto le conoscenze che avete già.
-Se volete, tenetelo piccolo: l’importante è che sia chiaro e funzionante.
+import manager
+import sys
 
-__VORREI ESEGUIRE UN PROGRAMMA__:
-1. DEVE CONTEGGIARE I BISCOTTI PRESENTI IN UNO SCAFFALE DEL SUPERMERCATO 
-2. COME INPUT DEVE RICEVERE IL NUMERO DI CONFEZIONI SCARICATE NEL MAGAZZINO, IL NUMERO DI PEZZI PRESENTI NELLO SCAFFALE E PEZZI VENDUTI
-3. DEVE PRODURRE IL NUMERO DI BISCOTTI PRESENTI IN MAGAZZINO, VENDUTI E I RIMAMENTI PEZZI PRESNTI NELLO SCAFFALE 
-"""
+def print_menu():
+    print("\n--- 🛒 Supermarket Manager ---")
+    print("1. Add Product")
+    print("2. View Products")
+    print("3. Delete Product")
+    print("4. Add Task to Product")
+    print("5. View Tasks")
+    print("6. Complete Task")
+    print("7. Exit")
+    print("------------------------------")
+
+def main():
+    while True:
+        print_menu()
+        choice = input("Select an option: ")
+
+        try:
+            if choice == "1":
+                name = input("Enter product name: ")
+                price = float(input("Enter product price: "))
+                prod = manager.add_product(name, price)
+                print(f"✅ Product '{prod['name']}' added with ID {prod['id']}")
+
+            elif choice == "2":
+                products = manager.get_products()
+                if not products:
+                    print("📭 No products found.")
+                else:
+                    print("\n📦 Products:")
+                    for p in products:
+                        print(f"  [{p['id']}] {p['name']} - ${p['price']:.2f}")
+
+            elif choice == "3":
+                pid = int(input("Enter Product ID to delete: "))
+                manager.remove_product(pid)
+                print(f"🗑️ Product {pid} and its tasks deleted.")
+
+            elif choice == "4":
+                pid = int(input("Enter Product ID for the task: "))
+                desc = input("Enter task description: ")
+                try:
+                    task = manager.add_task(desc, pid)
+                    print(f"✅ Task added to Product {pid}: {task['description']}")
+                except ValueError as e:
+                    print(f"❌ Error: {e}")
+
+            elif choice == "5":
+                pid_input = input("Enter Product ID to filter (or press Enter for all): ")
+                pid = int(pid_input) if pid_input else None
+                tasks = manager.get_tasks(pid)
+                if not tasks:
+                    print("📭 No tasks found.")
+                else:
+                     print("\n📋 Tasks:")
+                     for t in tasks:
+                         status_icon = "✅" if t['status'] == "Completed" else "⏳"
+                         print(f"  [{t['id']}] {status_icon} {t['description']} (Prod ID: {t['product_id']})")
+
+            elif choice == "6":
+                tid = int(input("Enter Task ID to complete: "))
+                try:
+                    manager.complete_task(tid)
+                    print(f"🎉 Task {tid} marked as completed!")
+                except ValueError as e:
+                    print(f"❌ Error: {e}")
+
+            elif choice == "7":
+                print("👋 Goodbye!")
+                break
+            
+            else:
+                print("❌ Invalid option, please try again.")
+
+        except ValueError:
+            print("❌ Invalid input. Please enter numbers for IDs/Prices.")
+        except Exception as e:
+            print(f"❌ Unexpected Error: {e}")
+
+if __name__ == "__main__":
+    main()
