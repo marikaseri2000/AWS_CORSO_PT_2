@@ -1,17 +1,19 @@
-import os
+import os 
 import google.generativeai as genai
 from typing import List, Dict, Any, Optional
 
-GEMINI_API_KEY=AIzaSyBip0sH8BfBsuVkQlK2ucj_WqbI1T3xFOY
+GEMINI_API_KEY="AIzaSyBip0sH8BfBsuVkQlK2ucj_WqbI1T3xFOY"
+
 def get_recommendations(books: List[Dict[str, Any]], genre_focus: Optional[str] = None) -> str:
-    api_key = os.environ.get("GEMINI_API_KEY")
+    """Inizializza la libreria Gemini"""
+    api_key = GEMINI_API_KEY
     if not api_key:
         return "Error: GEMINI_API_KEY environment variable not set."
-        
+
     genai.configure(api_key=api_key)
     
     """Inizializza il modello Gemini"""
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel("gemini-3-flash-preview")
     
     """Costruisce il prompt"""
     prompt = "Consiglia dei libri basandoti sui libri che ho letto e considerando le mie valutazioni:\n"
@@ -35,7 +37,7 @@ def get_recommendations(books: List[Dict[str, Any]], genre_focus: Optional[str] 
         prompt += "\nSuggerisci 3-5 libri che potresti apprezzare. Formattali come una lista con Titolo, Autore e una breve ragione."
         
     """Invia il prompt al modello Gemini e restituisce la risposta"""    
-    try:
+    try:  
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:

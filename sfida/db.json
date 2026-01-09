@@ -11,6 +11,18 @@
       "rating": null,
       "added_at": "2026-01-09T10:06:45.029683",
       "finished_at": null
+    },
+    {
+      "id": "13d79c91-8e00-48fb-bbe5-8a9fc84a0b2d",
+      "title": "oojdss",
+      "author": "aa",
+      "genre": "horror",
+      "pages": 27883,
+      "status": "done",
+      "current_page": 27883,
+      "rating": 4,
+      "added_at": "2026-01-09T11:52:18.697722",
+      "finished_at": "2026-01-09T11:58:02.281334"
     }
   ]
 }

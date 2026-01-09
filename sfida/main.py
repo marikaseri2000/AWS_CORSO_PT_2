@@ -4,19 +4,21 @@ import books
 import stats
 import ai
 import utils
-from books import get_all_books, add_book
+from books import get_all_books, add_book, update_book_status
 from utils import print_error, print_success, print_info
-
+from ai import get_recommendations
+from stats import calculate_stats
 
 
 def cmd_add(args):
     """Aggiunge un nuovo libro."""
-    if args.pages <= 0:
+    if args["pages"] <= 0:
         print_error("Le pagine devono essere maggiori di 0")
         return
 
-    book = add_book(args.title, args.author, args.genre, args.pages)
+    book = add_book(args["title"], args["author"], args["genre"], args["pages"])
     print_success(f"Libro aggiunto: '{book['title']}' (ID: {book['id'][:8]})")
+
 def cmd_list(args=None):
     """Mostra tutti i libri."""
     all_books = get_all_books()
@@ -50,75 +52,75 @@ def cmd_list(args=None):
 
 def cmd_update(args):
     """Aggiorna stato, progresso o rating di un libro."""
-    all_books = books.get_all_books()
+    all_books = get_all_books()
     target = None
 
     for b in all_books:
-        if b["id"].startswith(args.book_id_prefix):
+        if b["id"].startswith(args["book_id_prefix"]):
             target = b
             break
 
     if not target:
-        utils.print_error("Libro non trovato")
+        print_error("Libro non trovato")
         return
 
-    status = args.status
-    page = args.page
-    rating = args.rating
+    status = args["status"]
+    page = args["page"]
+    rating = args["rating"]
 
     if status == "reading" and page is None:
         try:
             page = int(input(f"Pagina corrente (0-{target['pages']}): "))
         except ValueError:
-            utils.print_error("Numero di pagina non valido")
+            print_error("Numero di pagina non valido")
             return
 
     if page is not None and (page < 0 or page > target["pages"]):
-        utils.print_error("Pagina fuori range")
+        print_error("Pagina fuori range")
         return
 
     if status == "done" and rating is None:
         try:
             rating = int(input("Valutazione (1-5): "))
         except ValueError:
-            utils.print_error("Valutazione non valida")
+            print_error("Valutazione non valida")
             return
 
     if rating is not None and (rating < 1 or rating > 5):
-        utils.print_error("La valutazione deve essere tra 1 e 5")
+        print_error("La valutazione deve essere tra 1 e 5")
         return
 
-    updated = books.update_book_status(target["id"], status, page, rating)
+    updated = update_book_status(target["id"], status, page, rating)
     if updated:
-        utils.print_success(f"Libro aggiornato: {updated['title']}")
+        print_success(f"Libro aggiornato: {updated['title']}")
     else:
-        utils.print_error("Aggiornamento fallito")
+        print_error("Aggiornamento fallito")
 
 def cmd_delete(args):
     """Elimina un libro."""
-    all_books = books.get_all_books()
+    all_books = get_all_books()
     target = None
 
     for b in all_books:
-        if b["id"].startswith(args.book_id_prefix):
+        if b["id"].startswith(args["book_id_prefix"]):
             target = b
             break
 
     if not target:
-        utils.print_error("Libro non trovato")
+        print_error("Libro non trovato")
         return
 
     confirm = input(f"Eliminare '{target['title']}'? (y/n): ")
     if confirm.lower() == "y":
-        if books.delete_book(target["id"]):
-            utils.print_success("Libro eliminato")
+        if delete_book(target["id"]):
+            print_success("Libro eliminato")
         else:
-            utils.print_error("Errore durante l'eliminazione")
+            print_error("Errore durante l'eliminazione")
 
 def cmd_stats(args):
     """Mostra statistiche della libreria."""
     all_books = get_all_books()
-    data = stats.calculate_stats(all_books)
+    data = calculate_stats(all_books)
 
     print("\n📊 STATISTICHE\n")
     print(f"📚 Totale libri: {data['total_books']}")
@@ -132,14 +134,14 @@ def cmd_stats(args):
 
 def cmd_suggest(args):
     """Suggerimenti AI."""
-    all_books = books.get_all_books()
+    all_books = get_all_books()
 
     if not all_books:
-        utils.print_info("Nessun libro disponibile per i suggerimenti.")
+        print_info("Nessun libro disponibile per i suggerimenti.")
         return
 
-    utils.print_info("Sto chiedendo suggerimenti a Gemini...")
-    recommendation = ai.get_recommendations(all_books, args.genre)
+    print_info("Sto chiedendo suggerimenti a Gemini...")
+    recommendation = get_recommendations(all_books, args["genre"])
 
     print("\n🤖 SUGGERIMENTI AI\n")
     print(recommendation)
@@ -212,7 +214,8 @@ def main():
             book_data = input_delete_book()
             cmd_delete(book_data)
         elif choice == "5":
-            cmd_stats()
+            all_books = get_all_books()
+            cmd_stats(all_books)
         elif choice == "6":
             genre_data = input_suggest_genre()
             cmd_suggest(genre_data)
