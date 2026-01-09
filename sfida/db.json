@@ -1,0 +1,16 @@
+{
+  "books": [
+    {
+      "id": "ccd382ec-989b-4199-80e6-18ffa6ac9c27",
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "pages": 310,
+      "status": "reading",
+      "current_page": 50,
+      "rating": null,
+      "added_at": "2026-01-09T10:06:45.029683",
+      "finished_at": null
+    }
+  ]
+}
