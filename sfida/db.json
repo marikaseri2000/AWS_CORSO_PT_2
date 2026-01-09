@@ -23,6 +23,18 @@
       "rating": 4,
       "added_at": "2026-01-09T11:52:18.697722",
       "finished_at": "2026-01-09T11:58:02.281334"
+    },
+    {
+      "id": "eaaca892-7045-4ebc-885e-22e13daf2aa1",
+      "title": "gerri",
+      "author": "io",
+      "genre": "horror",
+      "pages": 7888,
+      "status": "todo",
+      "current_page": 0,
+      "rating": null,
+      "added_at": "2026-01-09T12:51:26.019299",
+      "finished_at": null
     }
   ]
 }
