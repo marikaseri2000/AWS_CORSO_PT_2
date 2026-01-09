@@ -3,7 +3,6 @@ from utils import print_error, print_success, print_info
 from ai import get_recommendations
 from stats import calculate_stats
 
-
 def cmd_add(args):
     
     """Aggiunge un nuovo libro."""

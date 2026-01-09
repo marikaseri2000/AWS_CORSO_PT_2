@@ -1,8 +1,11 @@
 import os 
 import google.generativeai as genai
 from typing import List, Dict, Any, Optional
+from dotenv import load_dotenv
 
-GEMINI_API_KEY="AIzaSyBip0sH8BfBsuVkQlK2ucj_WqbI1T3xFOY"
+load_dotenv()
+
+GEMINI_API_KEY=os.getenv("GEMINI_API_KEY")
 
 def get_recommendations(books: List[Dict[str, Any]], genre_focus: Optional[str] = None) -> str:
     """Inizializza la libreria Gemini"""
