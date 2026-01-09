@@ -1,29 +1,28 @@
-import argparse
 import sys
-from rich.table import Table
-from rich.console import Console
 from typing import Optional
 import books
 import stats
 import ai
 import utils
+from books import get_all_books, add_book
+from utils import print_error, print_success, print_info
 
-console = Console()
+
 
 def cmd_add(args):
     """Aggiunge un nuovo libro."""
     if args.pages <= 0:
-        utils.print_error("Le pagine devono essere maggiori di 0")
+        print_error("Le pagine devono essere maggiori di 0")
         return
 
-    book = books.add_book(args.title, args.author, args.genre, args.pages)
-    utils.print_success(f"Libro aggiunto: '{book['title']}' (ID: {book['id'][:8]})")
+    book = add_book(args.title, args.author, args.genre, args.pages)
+    print_success(f"Libro aggiunto: '{book['title']}' (ID: {book['id'][:8]})")
 def cmd_list(args=None):
     """Mostra tutti i libri."""
-    all_books = books.get_all_books()
+    all_books = get_all_books()
 
     if not all_books:
-        utils.print_info("Nessun libro presente. Usa 'add' per iniziare.")
+        print_info("Nessun libro presente. Usa 'add' per iniziare.")
         return
 
     print("\n📚 LIBRERIA\n")
@@ -115,9 +114,10 @@ def cmd_delete(args):
             utils.print_success("Libro eliminato")
         else:
             utils.print_error("Errore durante l'eliminazione")
+
 def cmd_stats(args):
-     """Mostra statistiche della libreria."""
-    all_books = books.get_all_books()
+    """Mostra statistiche della libreria."""
+    all_books = get_all_books()
     data = stats.calculate_stats(all_books)
 
     print("\n📊 STATISTICHE\n")
