@@ -9,24 +9,32 @@ def get_recommendations(books: List[Dict[str, Any]], genre_focus: Optional[str] 
         return "Error: GEMINI_API_KEY environment variable not set."
         
     genai.configure(api_key=api_key)
+    
+    """Inizializza il modello Gemini"""
     model = genai.GenerativeModel('gemini-pro')
     
-    # Construct prompt
+    """Costruisce il prompt"""
     prompt = "Consiglia dei libri basandoti sui libri che ho letto e considerando le mie valutazioni:\n"
     
+    """Filtra i libri letti"""
     read_books = [b for b in books if b["status"] == "done"]
+    
+    """Se non ci sono libri letti e nessun genere specificato"""    
     if not read_books and not genre_focus:
         return "Non hai ancora finito nessun libro! Leggi dei libri così posso aiutarti!"
-        
+    
+    """Aggiunge i libri letti al prompt"""    
     for book in read_books:
         rating_str = f"Rated: {book['rating']}/5" if book.get('rating') else "No rating"
         prompt += f"- {book['title']} by {book['author']} ({book['genre']}). {rating_str}\n"
-        
+    
+    """Aggiunge il genere specificato al prompt se presente"""    
     if genre_focus:
-        prompt += f"\nI am specifically looking for suggestions in the '{genre_focus}' genre."
+        prompt += f"\nSuggerisci libri esclusivamente del genere '{genre_focus}'."
     else:
-        prompt += "\nPlease suggest 3-5 new books I might enjoy. Format them as a list with Title, Author, and a brief reason why."
+        prompt += "\nSuggerisci 3-5 libri che potresti apprezzare. Formattali come una lista con Titolo, Autore e una breve ragione."
         
+    """Invia il prompt al modello Gemini e restituisce la risposta"""    
     try:
         response = model.generate_content(prompt)
         return response.text
