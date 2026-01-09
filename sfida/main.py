@@ -5,6 +5,7 @@ from stats import calculate_stats
 
 
 def cmd_add(args):
+    
     """Aggiunge un nuovo libro."""
     if args["pages"] <= 0:
         print_error("Le pagine devono essere maggiori di 0")
