@@ -8,7 +8,7 @@ class Menu:
               4. List Projects
               5. List Task
               6. List Tags
-              7. Add id
+              7. Modifica nome progetto mediante l'id
               8. Exit
               """)
 
