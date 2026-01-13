@@ -76,7 +76,7 @@ def main():
 
             case "3":
                 print("*"*20)
-                print("Hai scelto di aggiungere un tags!")
+                print("Hai scelto di aggiungere un tags!") #TODO da implementare successivamente 
                 print("*"*20)
                 continue
 
@@ -98,7 +98,7 @@ def main():
                 continue
             case "6":
                 print("*"*20)
-                print("Hai scelto di aggiungere la lista di tags!")
+                print("Hai scelto di aggiungere la lista di tags!") #TODO da implementare successivamente
                 print("*"*20)
                 continue
             case "7":
