@@ -1,14 +1,15 @@
 class Menu:
-    #non ha bisogno di un costriuttore
+    #non ha bisogno di un costruttore
     def printMenu(self)->None:
         print(f"""
               1. Add Project
               2. Add Task
-              3. Add Tag
-              4. List Projects
-              5. List Task
-              6. List Tags
-              7. Modifica nome progetto mediante l'id
-              8. Exit
+              3. Add Category
+              4. Add Tag
+              5. List Projects
+              6. List Task
+              7. List Categories
+              8. List Tags
+              9. Modifica nome progetto mediante l'id
+              10. Exit
               """)
-

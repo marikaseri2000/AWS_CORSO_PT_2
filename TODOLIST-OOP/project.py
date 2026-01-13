@@ -5,7 +5,7 @@ class Project:
     def __init__(self, name: str):
         self.id=str(uuid.uuid4())
         self.name = name
-        self.task_list=[]
+        self.task_list: list[Task]=[]
     
     def get_tasks_lenght(self) -> int:
         return len(self.task_list)

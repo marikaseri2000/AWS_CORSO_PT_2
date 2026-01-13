@@ -1,8 +1,12 @@
 from project import Project
+from tag import TagLibrary
+from category import CategoryLibrary
 
 class Todolist:
     def __init__(self):
         self.projects: list[Project]=[]
+        self.tag_library = TagLibrary()
+        self.category_library = CategoryLibrary()
 
     def add_project(self, project: Project)->None:
         self.projects.append(project)
