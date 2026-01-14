@@ -1,5 +1,5 @@
 import uuid
-
+#
 class Category:
     def __init__(self, name: str, color: str):
         self.id = str(uuid.uuid4())

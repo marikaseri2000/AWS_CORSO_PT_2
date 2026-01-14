@@ -1,0 +1,6 @@
+pandas
+rich
+questionary
+requests
+pytest
+python-dotenv

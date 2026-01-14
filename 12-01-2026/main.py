@@ -13,7 +13,7 @@ print(biscotto2.forma)
 
 """
 
-#classe che definisce le caratteristiche di una persona del corso AWS
+#classe- che definisce le caratteristiche di una persona del corso AWS
 
 class Persona:
     def __init__(self, nome: str, cognome: str, isEdgemonyPartecipant: bool):
