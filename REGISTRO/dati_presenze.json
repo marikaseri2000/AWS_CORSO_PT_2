@@ -1,0 +1,52 @@
+{
+    "corsi": [
+        {
+            "nome": "aws restart",
+            "id": "0001",
+            "ore_totali": 7000,
+            "partecipanti_matricole": [
+                "00001",
+                "00002"
+            ]
+        },
+        {
+            "nome": "Java",
+            "id": "0002",
+            "ore_totali": 800,
+            "partecipanti_matricole": [
+                "00002"
+            ]
+        }
+    ],
+    "partecipanti": [
+        {
+            "nome": "Claudia",
+            "cognome": "Nigro",
+            "matricola": "00001",
+            "corsi": [
+                "0001"
+            ],
+            "presenze": {
+                "0001": {
+                    "2026-01-13": 1,
+                    "2026-01-12": 1
+                }
+            }
+        },
+        {
+            "nome": "Francesca",
+            "cognome": "Rossi",
+            "matricola": "00002",
+            "corsi": [
+                "0002",
+                "0001"
+            ],
+            "presenze": {
+                "0002": {},
+                "0001": {
+                    "2026-01-12": 0
+                }
+            }
+        }
+    ]
+}
