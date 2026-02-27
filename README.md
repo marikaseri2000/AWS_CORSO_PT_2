@@ -46,8 +46,8 @@ Il materiale qui presente riflette ore di formazione intensiva su:
 
 Sono sempre aperta a collaborazioni, feedback e nuove opportunità nel mondo Cloud e Backend.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/marikaserra/)
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/marikaserra)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/serafina-marika-di-bari-01595b339)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/marikaseri2000)
 
 ---
 *“Sempre in apprendimento, un commit alla volta.”*
