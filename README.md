@@ -1,29 +1,53 @@
-# AWS re/Start | Edgemony
+# 🚀 AWS re/Start Cloud Developer Portfolio
 
-Questo repository raccoglie il materiale didattico, gli esercizi della seconda parte del corso e i progetti sviluppati durante il percorso AWS re/Start organizzato da [Edgemony](https://edgemony.com) in collaborazione con AWS.
+Benvenuti nel repository ufficiale del mio percorso **AWS re/Start** in collaborazione con **Edgemony**. Questo spazio raccoglie la mia evoluzione come Cloud Developer, documentando la transizione dai fondamenti di Python fino all'integrazione di sistemi cloud e AI.
 
-Il corso ha una durata di sedici settimane e forma figure professionali in ambito Cloud, Sviluppo Backend e Project Managing.
+---
 
-## Programma Didattico
+## 👤 Profilo Junior Developer
 
-Gli argomenti trattati coprono l'intero ciclo di sviluppo e gestione cloud:
+Sono una sviluppatrice in formazione con un forte focus su:
+- **Backend Development**: Python (OOP, Clean Code), Django.
+- **Cloud Infrastructure**: AWS Services ( Practitioner / Architecting tracks).
+- **Modern Tools**: AI-assisted coding, Automazione Linux, Git workflow.
 
-* **Sviluppo Software:** Fondamenti di Python, Backend Development con Django, utilizzo di strumenti AI per il supporto allo sviluppo;
-* **Sistemi e Cloud:** Linux, AWS Cloud Practitioner (preparazione alla certificazione) e AWS Architecting (livello avanzato);
-* **Gestione Progetti:** Project Management.
+---
 
-## Trainer
+## 📂 Vetrina dei Progetti
 
-* **[Emanuele Gurini](https://www.linkedin.com/in/emanuelegurini/)**: Responsabile dei moduli tecnici (Python, Django, AWS, Linux, AI Tools).
-* **[Paola Lombardi](https://it.linkedin.com/in/paola-lombardi)**: Responsabile del modulo di Project Management ed AI Tools.
+Il repository è organizzato in moduli specializzati, ognuno focalizzato su una competenza chiave:
 
-## Struttura del Repository
+### 🏆 Progetti Top
 
-Il materiale è organizzato nelle seguenti cartelle per facilitare la consultazione:
+| Progetto | Descrizione | Competenze Chiave |
+| :--- | :--- | :--- |
+| [**📋 REGISTRO**](./REGISTRO) | Sistema professionale di gestione presenze con persistenza JSON. | OOP, Data Persistence, UUID |
+| [**📚 AI Book Manager**](./sfida) | Gestore libreria con suggerimenti basati su Intelligenza Artificiale. | AI Integration, CRUD, modularità |
+| [**📝 TODOLIST-OOP**](./TODOLIST-OOP) | Task manager avanzato con sistema di tag e categorie. | Software Design, OOP Patterns |
 
-* **Cartelle per data (es. `01-12-2025`)**: Contengono il codice sorgente scritto durante la lezione del giorno e gli esercizi pratici rivisti durante i meet;
-* **`quizzettone`**: Progetto applicativo sviluppato durante il corso;
-* **`conta-caratteri`**: Progetto dedicato alla logica di manipolazione delle stringhe.
-* **`fake-store`**: Progetto simulazione di un magazzino prodotti di un ecommerce, da riga di comando.
-* **`whounfollowed`**: Progetto per verificare chi ha smesso di seguire il nostro profilo github estrapolando i dati attraverso lo scraping delle pagine profilo.
-* **`whounfollow-api`**: Progetto per verificare chi ha smesso di seguire il nostro profilo github estrapolando i dati attraverso le api ufficiali di github.
+### 🛠️ Esercitazioni e Toolkit
+
+- [**☁️ ATTA**](./ATTA): Toolkit di automazione per operazioni AWS.
+- [**🛒 Supermarket Manager**](./esercizio8_gennaio): Simulazione di gestione inventario e task operativi.
+- [**🌐 API Client**](./todolist_fe): Client Python per interazione con API esterne.
+
+---
+
+## 🎓 Programma Didattico
+
+Il materiale qui presente riflette ore di formazione intensiva su:
+1. **Sviluppo Software:** Python Avanzato, Backend Development.
+2. **Sistemi e Cloud:** Linux Administration, AWS Architecture.
+3. **Project Management:** Metodologie Agile e gestione del ciclo di vita del software.
+
+---
+
+## 🤝 Connettiamoci
+
+Sono sempre aperta a collaborazioni, feedback e nuove opportunità nel mondo Cloud e Backend.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/marikaserra/)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/marikaserra)
+
+---
+*“Sempre in apprendimento, un commit alla volta.”*
